@@ -85,30 +85,17 @@ button {
   margin: 0 auto;
 }
 
-  .nav {
-    position: fixed;
-    left: 16px;
-    right: 16px;
-    top: var(--header-height, 72px);
-    width: calc(100% - 32px);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    background: var(--nav-bg);
-    border-radius: 16px;
-    backdrop-filter: blur(18px);
-    transform: translateY(-6px) scale(0.998);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 220ms ease, transform 220ms ease;
-    z-index: 40;
-  }
-  .nav.open {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-    pointer-events: auto;
-  }
+/* Header (topbar) — fixed and above other content */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  backdrop-filter: blur(18px);
+  background: var(--topbar-bg);
+  border-bottom: 1px solid var(--border);
+}
 
 .brand {
   font-weight: 800;
@@ -255,6 +242,12 @@ body.light .theme-toggle .moon {
 .button.primary {
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
+}
+
+.button.tertiary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .button.secondary {
