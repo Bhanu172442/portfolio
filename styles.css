@@ -19,6 +19,7 @@
   --topbar-bg: rgba(6, 7, 18, 0.75);
   --nav-bg: rgba(6, 7, 18, 0.92);
   --panel-bg: rgba(255, 255, 255, 0.04);
+  --header-height: 80px;
 }
 
 body {
@@ -32,7 +33,7 @@ body {
 }
 
 main {
-  padding-top: var(--header-height, 0px);
+  padding-top: var(--header-height, 72px);
 }
 
 body.light {
@@ -51,6 +52,7 @@ body.light {
   --topbar-bg: rgba(255, 255, 255, 0.85);
   --nav-bg: rgba(255, 255, 255, 0.96);
   --panel-bg: rgba(15, 23, 42, 0.04);
+  --header-height: 80px;
 }
 
 * {
@@ -174,7 +176,7 @@ body.light .theme-toggle .moon {
 }
 
 .hero {
-  padding: 5rem 0 4rem;
+  padding: 2.25rem 0 2.25rem;
 }
 
 .hero-grid {
@@ -541,18 +543,10 @@ body.light .theme-toggle .moon {
   }
   .nav a {
     padding: 0.5rem;
-    width: 100%;
+    width: 90%;
     text-align: center;
     background: transparent;
     border-bottom: 1px solid var(--border);
-  }
-  .hero {
-    padding-top: 4rem;
-  }
-
-  /* reduce hero padding on small devices */
-  .hero {
-    padding: 3rem 0 2.5rem;
   }
 }
 
