@@ -4,28 +4,49 @@ const navbar = document.getElementById('navbar');
 const typingElement = document.getElementById('typing');
 const revealItems = document.querySelectorAll('.reveal-element');
 
-const themes = {
-  dark: '',
-  light: 'light'
-};
+const body = document.body;
+
+function updateToggleUI(theme) {
+  if (!themeToggle) return;
+  const isLight = theme === 'light';
+  themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+  if (isLight) themeToggle.classList.add('active');
+  else themeToggle.classList.remove('active');
+}
 
 function setTheme(theme) {
-  document.body.className = theme === 'light' ? 'light' : '';
-  localStorage.setItem('portfolio-theme', theme);
+  if (theme === 'light') body.classList.add('light');
+  else body.classList.remove('light');
+  try {
+    localStorage.setItem('portfolio-theme', theme);
+  } catch (e) {
+    // ignore localStorage errors (private mode, etc.)
+  }
+  updateToggleUI(theme);
 }
 
 function toggleTheme() {
-  const current = localStorage.getItem('portfolio-theme') || 'dark';
+  const saved = localStorage.getItem('portfolio-theme');
+  const current = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   setTheme(current === 'dark' ? 'light' : 'dark');
 }
 
-themeToggle.addEventListener('click', toggleTheme);
+themeToggle && themeToggle.addEventListener('click', toggleTheme);
 
 function initializeTheme() {
-  const saved = localStorage.getItem('portfolio-theme');
-  if (saved === 'light') {
-    setTheme('light');
+  let saved = null;
+  try {
+    saved = localStorage.getItem('portfolio-theme');
+  } catch (e) {
+    saved = null;
   }
+  if (saved) {
+    setTheme(saved);
+    return;
+  }
+  // Fall back to system preference if no saved choice
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  setTheme(prefersLight ? 'light' : 'dark');
 }
 
 mobileMenu.addEventListener('click', () => {

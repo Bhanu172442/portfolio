@@ -136,6 +136,33 @@ button {
   display: none;
 }
 
+/* Theme toggle icon transitions */
+.theme-toggle span {
+  display: inline-block;
+  transition: opacity 180ms ease, transform 180ms ease;
+  line-height: 1;
+}
+
+.theme-toggle .sun {
+  opacity: 0;
+  transform: translateY(6px) scale(0.95);
+}
+
+.theme-toggle .moon {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+body.light .theme-toggle .sun {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+body.light .theme-toggle .moon {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.95);
+}
+
 .hero {
   padding: 5rem 0 4rem;
 }
