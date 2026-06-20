@@ -29,6 +29,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  padding-top: var(--header-height, 0px);
 }
 
 body.light {
@@ -511,7 +512,7 @@ body.light .theme-toggle .moon {
 @media (max-width: 740px) {
   .nav {
     position: fixed;
-    inset: 72px 16px auto auto;
+    inset: var(--header-height, 72px) 16px auto auto;
     width: calc(100% - 32px);
     max-height: 0;
     flex-direction: column;

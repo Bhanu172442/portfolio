@@ -51,6 +51,8 @@ function initializeTheme() {
 
 mobileMenu.addEventListener('click', () => {
   navbar.classList.toggle('open');
+  // header height may change when nav opens (wraps lines) — update spacing
+  setTimeout(adjustForHeader, 120);
 });
 
 const typingPhrases = [
@@ -100,7 +102,19 @@ window.addEventListener('load', () => {
   initializeTheme();
   updateTyping();
   revealOnScroll();
+  adjustForHeader();
 });
+
+window.addEventListener('resize', () => {
+  adjustForHeader();
+});
+
+function adjustForHeader() {
+  const topbar = document.querySelector('.topbar');
+  if (!topbar) return;
+  const h = topbar.offsetHeight || 0;
+  document.documentElement.style.setProperty('--header-height', h + 'px');
+}
 
 const navLinks = document.querySelectorAll('.nav a');
 navLinks.forEach((link) => {
