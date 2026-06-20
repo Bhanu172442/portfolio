@@ -81,23 +81,27 @@ button {
 }
 
 .container {
-  width: min(1110px, calc(100% - 2rem));
-  margin: 0 auto;
+    display: flex;
+  margin: 30px;
 }
 
 /* Header (topbar) — fixed and above other content */
 .topbar {
   position: fixed;
+
   top: 0;
   left: 0;
   right: 0;
-  z-index: 60;
+  z-index: 999;
   backdrop-filter: blur(18px);
   background: var(--topbar-bg);
   border-bottom: 1px solid var(--border);
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 800;
   letter-spacing: -0.05em;
   font-size: 1.2rem;
@@ -106,6 +110,9 @@ button {
 .nav {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 1.5rem;
   gap: 1.3rem;
 }
 
@@ -128,10 +135,6 @@ button {
 
 .theme-toggle,
 .mobile-menu {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--surface-strong);
@@ -521,25 +524,27 @@ body.light .theme-toggle .moon {
   .nav {
     display: flex;
     position: fixed;
-    inset: var(--header-height, 72px) 16px auto auto;
-    width: calc(100% - 32px);
+    width:90%;
     max-height: 0;
     flex-direction: column;
     overflow: hidden;
-    padding: 1rem;
+    margin-top: 4rem;   
     background: var(--nav-bg);
     border-radius: 24px;
     backdrop-filter: blur(18px);
     transition: max-height 0.35s ease;
+    gap: 0.1rem;
+    align-items: center;
   }
   .nav.open {
     max-height: 320px;
   }
   .nav a {
-    padding: 0.9rem 0.6rem;
-    border-radius: 10px;
+    padding: 0.5rem;
+    width: 100%;
+    text-align: center;
     background: transparent;
-    border-bottom: none;
+    border-bottom: 1px solid var(--border);
   }
   .hero {
     padding-top: 4rem;
