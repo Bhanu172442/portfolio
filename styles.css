@@ -29,6 +29,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+main {
   padding-top: var(--header-height, 0px);
 }
 
@@ -82,22 +85,30 @@ button {
   margin: 0 auto;
 }
 
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  backdrop-filter: blur(18px);
-  background: var(--topbar-bg);
-  border-bottom: 1px solid var(--border);
-}
-
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 0;
-}
+  .nav {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    top: var(--header-height, 72px);
+    width: calc(100% - 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--nav-bg);
+    border-radius: 16px;
+    backdrop-filter: blur(18px);
+    transform: translateY(-6px) scale(0.998);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease, transform 220ms ease;
+    z-index: 40;
+  }
+  .nav.open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
 .brand {
   font-weight: 800;
@@ -532,11 +543,18 @@ body.light .theme-toggle .moon {
     max-height: 320px;
   }
   .nav a {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 0.6rem;
+    border-radius: 10px;
+    background: transparent;
+    border-bottom: none;
   }
   .hero {
     padding-top: 4rem;
+  }
+
+  /* reduce hero padding on small devices */
+  .hero {
+    padding: 3rem 0 2.5rem;
   }
 }
 
