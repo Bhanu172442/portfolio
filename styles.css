@@ -507,10 +507,15 @@ body.light .theme-toggle .moon {
   .mobile-menu {
     display: grid;
   }
+  /* hide full navbar on smaller screens and use hamburger */
+  .nav {
+    display: none;
+  }
 }
 
 @media (max-width: 740px) {
   .nav {
+    display: flex;
     position: fixed;
     inset: var(--header-height, 72px) 16px auto auto;
     width: calc(100% - 32px);
