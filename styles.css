@@ -392,6 +392,24 @@ body.light .theme-toggle .moon {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* Ensure section header sits above content for skills and projects
+   on all screen sizes: header first, then the list/grid */
+.skills-section .container,
+.projects-section .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+/* Projects grid: responsive columns but keep header above */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+}
+
 .skill-card,
 .project-card,
 .education-card,
